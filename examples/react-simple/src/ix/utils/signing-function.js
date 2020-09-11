@@ -24,7 +24,7 @@ const signWithKey = (privateKey, msgHex) => {
   return Buffer.concat([r, s]).toString("hex")
 }
 
-export const signingFunction = ({
+export const signingFunction = privateKey => ({
   message,
   addr,
   keyId,
@@ -38,6 +38,6 @@ export const signingFunction = ({
   return {
     addr,
     keyId,
-    signature: signWithKey(flowJson.accounts.service.privateKey, hashToBuffer(message))
+    signature: signWithKey(privateKey, hashToBuffer(message))
   }
 }
