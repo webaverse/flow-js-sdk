@@ -18,8 +18,8 @@ const encodePublicKeyForFlow = publicKey =>
     ])
     .toString("hex")
 
-export const genKeys = () => {
-  const keys = ec.genKeyPair()
+export const genKeys = options => {
+  const keys = ec.genKeyPair(options)
   const privateKey = keys.getPrivate("hex")
   const publicKey = keys.getPublic("hex").replace(/^04/, "")
 
